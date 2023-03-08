@@ -1,0 +1,15 @@
+{
+  "name": "v14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ubaid7#5840",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "ms": "^2.1.3"
+  }
+}
