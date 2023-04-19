@@ -12,8 +12,7 @@ for (const folder of funtionFolders) {
     for (const file of functionFiles) require(`./src/functions/${folder}/${file}`)(client) // Read Files
 }
 
-const { Configuration, OpenAIApi } = require('openai')
-
+const { Configuration, OpenAIApi } = require('openai') // npm i openai
 const configuration = new Configuration({
     apiKey: openai_api
 })
