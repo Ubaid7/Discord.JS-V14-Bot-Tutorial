@@ -1,0 +1,24 @@
+{
+  "name": "tutorial-bot-v14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "better-sqlite3": "^8.2.0",
+    "cpu-stat": "^2.0.1",
+    "discord.js": "^14.9.0",
+    "moment": "^2.29.4",
+    "ms": "^2.1.3",
+    "openai": "^3.2.1",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "quick.db": "^9.1.1",
+    "tech-tip-cyber": "^1.2.8"
+  }
+}
