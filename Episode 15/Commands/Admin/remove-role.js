@@ -2,19 +2,19 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ActionRowBuilder
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('add-role') // Name Of Slash Command
-        .setDescription('Add Role To A User')  // Description Of Slash Command
-        // Selecting User To Add Role
+        .setName('remove-role') // Name Of Slash Command
+        .setDescription('Remove Role From A User')  // Description Of Slash Command
+        // Selecting User To Remove Role
         .addUserOption(option =>
             option
                 .setName('user')
-                .setDescription('User You Want To Add Role')
+                .setDescription('User You Want To Remove Role')
                 .setRequired(true))
-        // Selecting Role To Add To User
+        // Selecting Role To Remove From User
         .addRoleOption(option =>
             option
                 .setName('role')
-                .setDescription('Role You Want To Add To User')
+                .setDescription('Role You Want Remove Add From User')
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageRoles) // Permission To Use Command
         .setDMPermission(false)
@@ -23,12 +23,12 @@ module.exports = {
         const user = interaction.options.getMember('user') // Get User From Options
         const role = interaction.options.getRole('role') // Get Role From Options
 
-        if (user.roles.cache.has(role.id)) { // If User Already Has Role
-            await interaction.reply({ content: `${user} Already Has ${role}`, ephemeral: true })
-        } else { // If User Doesn't Have Role
+        if (!user.roles.cache.has(role.id)) { // If User Doesn't Have Role
+            await interaction.reply({ content: `${user} Doesn't Has ${role}`, ephemeral: true })
+        } else { // If User Have Role
             const embed = new EmbedBuilder()
-                .setTitle('Add Role')
-                .setDescription(`You Want To Add ${role} To ${user}\n\nSelect Below Using Buttons`)
+                .setTitle('Remove Role')
+                .setDescription(`You Want To Remove ${role} From ${user}\n\nSelect Below Using Buttons`)
                 .setColor('Random')
 
             const buttons = new ActionRowBuilder()
@@ -56,8 +56,8 @@ module.exports = {
                 const value = id
 
                 if (value === 'yes') { // If Yes Button Is Selected
-                    await interaction.followUp({ content: `Successfully Added **${role.name}** To ${user}` })
-                    user.roles.add(role)
+                    await interaction.followUp({ content: `Successfully Removed **${role.name}** From ${user}` })
+                    user.roles.remove(role)
                     await i.update({ content: `Interaction Completed`, embeds: [embed], components: [] })
                     collector.stop()
                 } else if (value === 'no') { // If No Button Is Selected
