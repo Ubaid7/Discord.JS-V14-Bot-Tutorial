@@ -2,22 +2,22 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('disc
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('ban') // Name Of Slash Command
-        .setDescription('Ban A Member') // Description Of Slash Command
+        .setName('kick') // Name Of Slash Command
+        .setDescription('Kick A Member') // Description Of Slash Command
         // Seletcting User To Ban
         .addUserOption(option =>
             option
                 .setName('target')
-                .setDescription('User You Want To Ban')
+                .setDescription('User You Want To Kick')
                 .setRequired(true)
         )
-        // Reason For Banning(Optional)
+        // Reason For Kicking(Optional)
         .addStringOption(option =>
             option
                 .setName('reason')
-                .setDescription('Reason For Banning')
+                .setDescription('Reason For Kicking')
         )
-        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers) // Permission User Should Have To Use Command
+        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers) // Permission User Should Have To Use Command
         .setDMPermission(false),
 
     async execute(interaction, client) {
@@ -25,12 +25,12 @@ module.exports = {
         const reason = interaction.options.getString('reason') ?? 'No Reason Provided'
         const member = await interaction.guild.members.fetch(user.id)
 
-        const banEmbed = new EmbedBuilder()
+        const kickEmbed = new EmbedBuilder()
         .setColor('Random')
-        .setTitle('Ban')
-        .setDescription(`Banned ${user.username} For ${reason}`)
+        .setTitle('Kick')
+        .setDescription(`Kicked ${user.username} For ${reason}`)
         
-        await interaction.reply({ embeds: [banEmbed] })
-        await member.ban({ reason: reason })
+        await interaction.reply({ embeds: [kickEmbed] })
+        await member.kick({ reason: reason })
     }
 }
