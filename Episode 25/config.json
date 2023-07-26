@@ -1,0 +1,5 @@
+{
+    "token": "Bot_Token",
+    "openai_api": "OpenAI_API_Key",
+    "mongo_url": "MongoDB_URL"
+}
