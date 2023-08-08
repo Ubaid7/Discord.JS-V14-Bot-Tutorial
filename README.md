@@ -105,7 +105,7 @@ A very advanced welcome system with custom welcome message, image, role and more
 
 ## 🤝 Support Us
 - ### Discord
-    <a href="https://discord.gg/E6VFACWu5V" target="_blank">
+    <a href="https://discord.gg/2FMvpaUcWh" target="_blank">
       <img src="https://discord.com/api/guilds/787061623696523304/widget.png?style=banner4">
     </a>
 - ### YouTube
